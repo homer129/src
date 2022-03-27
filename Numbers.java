@@ -2,7 +2,7 @@ public class Numbers {
     
 
     public static void main(String[] args) throws Exception {
-        System.out.println(getRectangleArea(4, 5));    
+        System.out.println(getCicleCircumference(5.0));    
     }
 
     /**
@@ -33,7 +33,9 @@ public class Numbers {
     *   0    => 0
     */
     public static Double getCicleCircumference(Double radius) {
-        return 0.0;
+        final var pi = 3.141592653589793;
+        var L = pi * 2 * radius; 
+        return L;
     }
 
     /**
