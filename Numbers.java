@@ -2,7 +2,7 @@ public class Numbers {
     
 
     public static void main(String[] args) throws Exception {
-        System.out.println(getCicleCircumference(5.0));    
+        System.out.println(roundToPowerOfTen(1678.0, 3.0));    
     }
 
     /**
@@ -51,7 +51,8 @@ public class Numbers {
     *  -3, 3  => 0
     */
     public static Double getAverage(Double value1, Double value2) {
-        return 0.0;
+        Double average = (value1 + value2) / 2;
+        return average;
     }
 
     /**
@@ -70,7 +71,10 @@ public class Numbers {
     *   (-5,0) (10,-10) => 18.027756377319946
     */
     public static Double getDistanceBetweenPoints(Integer x1, Integer y1, Integer x2, Integer y2) {
-        return 0.0;
+        var x = x2 - x1;
+        var y = y2 - y1;
+        Double ab = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+        return ab;
     }
 
     /**
@@ -86,7 +90,8 @@ public class Numbers {
     *   5*x = 0         => 0
     */
     public static Integer getLinearEquationRoot(Integer a, Integer b) {
-        return 0;
+        var x = -b / a;
+        return x;
     }
 
     /**
@@ -107,7 +112,10 @@ public class Numbers {
     *   (0,1) (1,2)     => 0
     */
     public static Double getAngleBetweenVectors(Integer x1, Integer y1, Integer x2, Integer y2) {
-        return 0.0;
+        var x = x1 * x2 + y1 * y2;
+        var y = Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2));
+        var a = Math.acos(x / y);
+        return a;
     }
 
     /**
@@ -122,7 +130,8 @@ public class Numbers {
     * '-525.5'     => -525.5
     */
     public static Double parseNumberFromString(String value) {
-        return 0.0;
+        Double number = Double.parseDouble(value);
+        return number;
     }
 
     /**
@@ -139,7 +148,8 @@ public class Numbers {
     *   1,2,3   => 3.741657386773941
     */
     public static Double getParallelipidedDiagonal(Integer a, Integer b, Integer c) {
-        return 0.0;
+        var d = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
+        return d;
     }
 
     /**
@@ -160,6 +170,9 @@ public class Numbers {
     *   1678, 3  => 2000
     */
     public static Double roundToPowerOfTen(Double num, Double pow) {
-        return 0.0;
+        var a = num / Math.pow(10, pow);
+        var b = Math.round(a);
+        var c = b * Math.pow(10, pow); 
+        return c;
     }
 }
