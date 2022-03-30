@@ -4,7 +4,7 @@ import java.util.Map;
 public class Loops {
     
     public static void main(String[] args) throws Exception {
-        System.out.println(getFactorial(0));
+        System.out.println(getIntervalString(0, 1, true, false));
 
     }
 
@@ -73,7 +73,11 @@ public class Loops {
      *   -1,1  =>  0  ( = -1 + 0 + 1 )
      */
     public static Integer getSumBetweenNumbers(Integer num1, Integer num2) {
-        return 0;
+        var result = 0;
+        for(var i = num1; i <= num2; i++){
+            result = result + i;
+        }
+        return result;
     }
 
     /**
@@ -91,6 +95,9 @@ public class Loops {
      *   10,10,10 =>  true
      */
     public static Boolean isTriangle(Integer a, Integer b, Integer c) {
+        if (a < b + c && a > b - c && b < a + c && b > a - c && c < a + b && c > a - b) {
+            return true;
+        }
         return false;
     }
 
@@ -195,7 +202,28 @@ public class Loops {
      *
      */
     public static java.lang.String getIntervalString(Integer a, Integer b, Boolean isStartIncluded, Boolean isEndIncluded) {
-        return "";
+        var result = "";
+        if (isStartIncluded == true) {
+            result = result + "[";
+        } else {
+            result = result + "(";
+        }
+        if (a < b) {
+            result = result + a;
+        } else {
+            result = result + b;
+        }
+        if (b > a) {
+            result = result + ", " + b;
+        } else {
+            result = result + ", " + a;
+        }
+        if (isEndIncluded == true) {
+            result = result + "]";
+        } else {
+            result = result + ")";
+        }
+        return result;
     }
 
     /**
@@ -211,7 +239,11 @@ public class Loops {
      * 'noon' => 'noon'
      */
     public static java.lang.String reverseString(String str) {
-        return "";
+        var result = "";
+        for (var i = str.length() - 1; i >= 0; i--) {
+            result = result + str.charAt(i);
+        }
+        return result;
     }
 
     /**
@@ -227,7 +259,13 @@ public class Loops {
      *   34143 => 34143
      */
     public static Integer reverseInteger(Integer num) {
-        return 0;
+        var result = "";
+        String str = Integer.toString(num);
+        for (var i = str.length() - 1; i >= 0; i--) {
+            result = result + str.charAt(i);
+        }
+        int result1 = Integer.parseInt(result);
+        return result1;
     }
 
     /**
@@ -245,7 +283,19 @@ public class Loops {
      *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
      */
     public static Integer getDigitalRoot(Integer num) {
-        return 0;
+        var sum = 0;
+        String str = Integer.toString(num);
+        var result = 0;
+        for (var i = 0; i < str.length(); i++) {
+            sum = sum + Character.getNumericValue(str.charAt(i));
+        } if (sum > 9) {
+            String str1 = Integer.toString(sum);
+            for (var i1 = 0; i1 < str1.length(); i1++) {
+                result = result + Character.getNumericValue(str1.charAt(i1));
+            }
+            return result;
+        }       
+        return sum;
     }
 
     /**
