@@ -3,17 +3,26 @@ import java.util.List;
 
 public class Arrays {
     public static void main(String[] args) throws Exception {
-        ArrayList<Integer> list = new ArrayList<>();
+        /*ArrayList<String> list = new ArrayList<>();
        
-        list.add(-1);
+        list.add("aaaa");
+        list.add("bbbb");
+        list.add("cc");
+        list.add("d");
+        list.add("eeeee");
+        list.add("fff");*/
+
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
         list.add(2);
-        list.add(-5);
-        list.add(-4);
-        list.add(0);
+        list.add(3);
+        list.add(4);
+        list.add(5);
         list.add(-6);
         list.add(7);
+        list.add(7);
                 
-        System.out.println(getHead(list, 4));
+        System.out.println(distinct(list));
     }
 
     /**
@@ -101,7 +110,14 @@ public class Arrays {
     *    [ 'a', 'b', 'c', 'd', 'e', 'f', 'g' ]  => [ 'A', 'B', 'C', 'D', 'E', 'F', 'G' ]
     */
     public static List<String> getUpperCaseStrings(List<String> arr) {
-        return new ArrayList<String>();
+        ArrayList<String> arr1 = new ArrayList<>();
+        var a = arr.size();
+        for (var i = 0; i < a; i++) {
+            String b = arr.get(i);
+            String c = b.toUpperCase();
+            arr1.add(c);
+        }
+        return arr1;
     }
 
     /**
@@ -150,10 +166,18 @@ public class Arrays {
     *    [ 1, 3, 3, 3, 5 ], 4  => [ 1, 3, 3, 3 ]
     */
     public static List<Integer> getHead(List<Integer> arr, Integer n) {
-        var b = arr.size() - 1;
-        arr.removeRange(n, b);
-        return arr;
-
+        ArrayList<Integer> arr2 = new ArrayList<>();
+        for (var i = arr.size() - 1; arr2.size() <= n; i--) {
+            arr2.add(0, arr.get(i));
+        }
+        return arr2;
+    }
+        /*ArrayList<Integer> arr1 = new ArrayList<>();
+        for (var i = 0; i < n; i++) {
+            arr1.add(arr.get(i));
+        }
+        return arr1;*/
+    
     /**
     * Returns the n last items of the specified array
     *
@@ -164,8 +188,12 @@ public class Arrays {
     *    [ 1, 3, 4, 5 ], 2  => [ 4, 5 ]
     *    [ 1, 3, 3, 3, 5 ], 4  => [ 3, 3, 3, 5 ]
     */
-    //public static List<Integer> getTail(List<Integer> arr, Integer n) {
-        return new ArrayList<Integer>();
+    public static List<Integer> getTail(List<Integer> arr, Integer n) {
+        ArrayList<Integer> arr2 = new ArrayList<>();
+        for (var i = arr.size() - 1; arr2.size() + 1 <= n; i--) {
+            arr2.add(0, arr.get(i));
+        }
+        return arr2;
     }
 
     /**
@@ -204,7 +232,13 @@ public class Arrays {
     *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
     */
     public static List<Integer> toArrayOfSquares(List<Integer> arr) {
-        return new ArrayList<Integer>();
+        ArrayList<Integer> arr3 = new ArrayList<>();
+        for (var i = 0; i < arr.size(); i++) {
+            int a = arr.get(i);
+            int b = (int)Math.pow(a, 2);
+            arr3.add(b);
+        }
+        return arr3;
     }
 
     /**
@@ -222,7 +256,13 @@ public class Arrays {
     *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
     */
     public static List<Integer> getMovingSum(List<Integer> arr) {/////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return new ArrayList<Integer>();
+        ArrayList<Integer> arr4 = new ArrayList<>();
+        arr4.add(arr.get(0));
+        for (var i = 1; i < arr.size(); i++) {
+            var a = arr.get(i) + arr4.get(i-1);
+            arr4.add(a);
+        }
+        return arr4;
     }
 
     /**
@@ -236,7 +276,11 @@ public class Arrays {
     * [ 5, 4, 5, 4 ] => [ 4, 4 ]
     */
     public static List<Integer> getSecondItems(List<Integer> arr) {
-        return new ArrayList<Integer>();
+        ArrayList<Integer> arr5 = new ArrayList<>();
+        for (var i = 1; i < arr.size(); i+=2) {
+            arr5.add(arr.get(i));            
+        }
+        return arr5;
     }
 
     /**
@@ -267,7 +311,15 @@ public class Arrays {
     *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
     */
     public static List<Integer> distinct(List<Integer> arr) {
-        return new ArrayList<Integer>();
+        ArrayList<Integer> arr7 = new ArrayList<>();
+        for (var i = 0; i < arr.size(); i++) {
+            for (var j = i + 1; j < arr.size(); j++) {
+                if (arr.get(i) != arr.get(j)) {
+                    arr7.add(arr.get(i));
+                }
+            }
+        }
+        return arr7;
     }
     
 }
