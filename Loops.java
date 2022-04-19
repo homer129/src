@@ -1,10 +1,25 @@
 import java.util.Date;
 import java.util.Map;
+import java.util.LinkedHashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Loops {
     
+
     public static void main(String[] args) throws Exception {
-        System.out.println(getIntervalString(0, 1, true, false));
+    HashMap<String, Integer> m1 = new HashMap<String, Integer>();
+    HashMap<String, Integer> m2 = new HashMap<String, Integer>();
+    m1.put("top", 0);
+    m1.put("left", 0);
+    m1.put("width", 10);
+    m1.put("height", 10);
+    m2.put("top", 5);
+    m2.put("left", 5);
+    m2.put("width", 20);
+    m2.put("height", 20);
+    System.out.println(doRectanglesOverlap(m1, m2));
 
     }
 
@@ -133,8 +148,43 @@ public class Loops {
      *   { top:20, left:20, width: 20, height: 20 }    =>  false
      *  
      */
-    public static Boolean doRectanglesOverlap(Map<String, Integer> rect1, Map<String, Integer> rect2) {
-        return true;
+    public static Boolean doRectanglesOverlap(Map<String, Integer> rect1, Map<String, Integer> rect2) {        
+        ArrayList<Integer> arr1 = new ArrayList<Integer>();
+        ArrayList<Integer> arr2 = new ArrayList<Integer>();
+        ArrayList<Integer> arr3 = new ArrayList<Integer>();
+        ArrayList<Integer> arr4 = new ArrayList<Integer>();
+        ArrayList<String> arr5 = new ArrayList<String>();
+        ArrayList<String> arr6 = new ArrayList<String>();
+        for (var i = rect1.get("top"); i < rect1.get("width"); i++) {
+            arr1.add(i);
+        }
+        for (var j = rect1.get("left"); j < rect1.get("height"); j++) {            
+            arr2.add(j);
+        }
+        for (var a = 0; a < arr1.size(); a++) {            
+            for (var b = 0; b < arr2.size(); b++) {                
+                arr6.add(Integer.toString(arr1.get(a)) + "=" + Integer.toString(arr2.get(b)));
+            }
+        }
+        for (var c = rect2.get("top"); c < rect2.get("width"); c++) {            
+            arr3.add(c);
+        }
+        for (var d = rect2.get("left"); d < rect2.get("height"); d++) {            
+            arr4.add(d);
+        }
+        for (var f = 0; f < arr3.size(); f++) {            
+            for (var e = 0; e < arr4.size(); e++) {                
+                arr5.add(Integer.toString(arr3.get(f)) + "=" + Integer.toString(arr4.get(e)));
+            }             
+        }
+        for (var a1 = 0; a1 < arr6.size(); a1++) {
+            for (var a2 = 0; a2< arr5.size(); a2++) {
+                if (arr6.get(a1).equals(arr5.get(a2)) == true) {
+                    return true;
+                }
+            }
+        }
+        return  false;
     }
 
   /**
@@ -177,7 +227,18 @@ public class Loops {
      *   'entente' => null
      */
     public static String findFirstSingleChar(String str) {
-        return null;
+        char[] a = str.toCharArray();
+        LinkedHashSet<Character> b = new LinkedHashSet<>();
+        LinkedHashSet<Character> c = new LinkedHashSet<>();
+        for (Character i : a) //!!!!!!??
+        if (!b.add(i)) //!!!!!!!!!!??
+        c.add(i); //!!!!!!!!??
+        b.removeAll(c);
+        if (b.isEmpty()) {
+            return null;
+        }
+
+        return Character.toString(b.iterator().next());
     }
 
     /**
@@ -319,9 +380,17 @@ public class Loops {
      *   '{)' = false
      *   '{[(<{[]}>)]}' = true 
      */
-    public static Boolean isBracketsBalanced(String str) {///////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        return false;    
-    }
+    /*public static boolean isBracketsBalanced(String str) {///////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        HashMap<Character, Character> mS = new HashMap<Character, Character>();
+        mS.put('[', ']');
+        mS.put('(', ')');
+        mS.put('<', '>');
+        mS.put('{', '}');
+        char[] arr = str.toCharArray();
+        
+
+        return null;   
+    }*/
 
     /**
      * Returns the human readable string of time period specified by the start and end time.
