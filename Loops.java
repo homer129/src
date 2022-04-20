@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.LinkedHashSet;
 import java.util.HashMap;
@@ -9,7 +10,7 @@ public class Loops {
     
 
     public static void main(String[] args) throws Exception {
-    HashMap<String, Integer> m1 = new HashMap<String, Integer>();
+    /*HashMap<String, Integer> m1 = new HashMap<String, Integer>();
     HashMap<String, Integer> m2 = new HashMap<String, Integer>();
     m1.put("top", 0);
     m1.put("left", 0);
@@ -18,8 +19,10 @@ public class Loops {
     m2.put("top", 5);
     m2.put("left", 5);
     m2.put("width", 20);
-    m2.put("height", 20);
-    System.out.println(doRectanglesOverlap(m1, m2));
+    m2.put("height", 20);*/
+    Date sd = new Date("2000-01-01 01:00:00");
+    Date ed = new Date("2015-01-02 03:00:05");
+    System.out.println(timespanToHumanString(sd, ed));
 
     }
 
@@ -424,6 +427,11 @@ public class Loops {
      *
      */
     public static java.lang.String timespanToHumanString(Date startDate, Date endDate) {
-        return "";
-    }
+        try{
+            int diff = (int)(endDate.getTime() - startDate.getTime());
+            //return diff;
+        } catch (Exception ex) {
+            //return ex;
+        }
+    }    return ex;
 }

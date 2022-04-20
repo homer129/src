@@ -1,10 +1,13 @@
+import java.util.List;
 import java.util.ArrayList;
 import java.lang.String;
+import java.util.Map;
+import java.util.LinkedHashMap;
 
 public class Stringst {
     
     public static void main(String[] args) throws Exception {
-    System.out.println(extractEmails("angus.young@gmail.com;brian.johnson@hotmail.com;bon.scott@yahoo.com"));
+    System.out.println(getRectangleString(10, 10));
     }
 
     /**
@@ -20,7 +23,6 @@ public class Stringst {
      *   '',  'bb'  => 'bb'
      */
     public static String concatenateStrings(String value1, String value2) {
-            
         return value1 + value2;
     }
 
@@ -174,10 +176,12 @@ public class Stringst {
     *   'info@gmail.com' => ['info@gmail.com']
     */
     public static ArrayList<String> extractEmails(String str) {
-        String[] array = str.split(";");
-        ArrayList<String> arr = new ArrayList<>();
-        arr = Arrays.asList(array);
-        return arr;
+        String[] arr1 = str.split(";");
+        ArrayList<String> arr2 = new ArrayList<>();
+        for (var i = 0; i < arr1.length; i++){
+            arr2.add(arr1[i]);
+        }
+        return arr2;
     }
 
     /**
@@ -204,7 +208,25 @@ public class Stringst {
     *
     */
     public static String getRectangleString(Integer width, Integer height) {
-        return "";
+        String str = "";
+        str += "┌";
+        for (var i = 2; i < width; i++){
+            str += "─";
+        }
+        str += "┐" + "\n";
+        for (var j = 2; j < height; j++){
+            str += "│";
+            for (var f = 2; f < width; f++){
+                str += " ";
+            }
+            str += "│" + "\n";            
+        }
+        str += "└";
+        for (var i = 2; i < width; i++){
+            str += "─";
+        }
+        str += "┘";
+        return str;
     }
 
     /**
@@ -231,7 +253,36 @@ public class Stringst {
     *   'Q♠' => 50
     *   'K♠' => 51
     */
-    public static Integer getCardId(String value) {      
-    return 0;
+    public static Integer getCardId(String value) {
+        ArrayList<String> arr1 = new ArrayList<>();
+        ArrayList<String> arr2 = new ArrayList<>();
+        ArrayList<String> arr3 = new ArrayList<>();
+        LinkedHashMap<String, Integer> m1 = new LinkedHashMap<String, Integer>();
+        arr1.add("♣");
+        arr1.add("♦");
+        arr1.add("♥");
+        arr1.add("♠");
+        arr2.add("A");
+        arr2.add("2");
+        arr2.add("3");
+        arr2.add("4");
+        arr2.add("5");
+        arr2.add("6");
+        arr2.add("7");
+        arr2.add("8");
+        arr2.add("9");
+        arr2.add("10");
+        arr2.add("J");
+        arr2.add("Q");
+        arr2.add("K");
+        for (var i = 0; i < arr1.size(); i++){
+            for (var j = 0; j < arr2.size(); j++){
+                arr3.add(arr2.get(j) + arr1.get(i));
+            }
+        }
+        for (var f = 0; f < arr3.size(); f++){
+            m1.put(arr3.get(f), f);
+        }
+    return m1.get(value);
     }
 }

@@ -12,7 +12,38 @@ public class Arrays {
         list.add("eeeee");
         list.add("fff");*/
 
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        ArrayList<Integer> arr2 = new ArrayList<>();
+        ArrayList<Integer> arr3 = new ArrayList<>();
+        ArrayList<Integer> arr4 = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> arr6 = new ArrayList<ArrayList<Integer>>();
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        arr1.add(4);
+        arr1.add(5);
+        arr2.add(6);
+        arr2.add(7);
+        arr2.add(8);
+        arr2.add(9);
+        arr2.add(10);
+        arr3.add(11);
+        arr3.add(12);
+        arr3.add(13);
+        arr3.add(14);
+        arr3.add(15);
+        arr4.add(16);
+        arr4.add(17);
+        arr4.add(18);
+        arr4.add(19);
+        arr4.add(20);
+        arr6.add(arr1);
+        arr6.add(arr2);
+        arr6.add(arr3);
+        arr6.add(arr4);
+
+
+        /*ArrayList<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -20,9 +51,9 @@ public class Arrays {
         list.add(5);
         list.add(-6);
         list.add(7);
-        list.add(7);
+        list.add(7);*/
                 
-        System.out.println(distinct(list));
+        System.out.println(toCsvText(arr6));
     }
 
     /**
@@ -216,8 +247,20 @@ public class Arrays {
     *    +'20,21,22,23,24\n'
     *    +'30,31,32,33,34'
     */
-    public static java.lang.String toCsvText(List<List<Integer>> arr) {
-        return "";
+    public static String toCsvText(ArrayList<ArrayList<Integer>> arr) {
+        String str = "";
+        String str1 = "";
+        for (var i = 0; i < arr.size(); i++){
+            str += arr.get(i).toString() + "\n";
+        }
+        for (var j = 0; j < str.length(); j++){
+            if (str.charAt(j) == '[' || str.charAt(j) == ']' || str.charAt(j) == ' ') {
+                str1 += "";
+            } else {
+                str1 += str.charAt(j);
+            }
+        }
+        return str1;
     }
 
     /**
