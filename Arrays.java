@@ -12,7 +12,7 @@ public class Arrays {
         list.add("eeeee");
         list.add("fff");*/
 
-        ArrayList<Integer> arr1 = new ArrayList<>();
+        /*ArrayList<Integer> arr1 = new ArrayList<>();
         ArrayList<Integer> arr2 = new ArrayList<>();
         ArrayList<Integer> arr3 = new ArrayList<>();
         ArrayList<Integer> arr4 = new ArrayList<>();
@@ -40,10 +40,10 @@ public class Arrays {
         arr6.add(arr1);
         arr6.add(arr2);
         arr6.add(arr3);
-        arr6.add(arr4);
+        arr6.add(arr4);*/
 
 
-        /*ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
         list.add(3);
@@ -51,9 +51,9 @@ public class Arrays {
         list.add(5);
         list.add(-6);
         list.add(7);
-        list.add(7);*/
+        list.add(7);
                 
-        System.out.println(toCsvText(arr6));
+        System.out.println(propagateItemsByPositionIndex(list));
     }
 
     /**
@@ -196,13 +196,13 @@ public class Arrays {
     *    [ 1, 3, 4, 5 ], 2  => [ 1, 3 ]
     *    [ 1, 3, 3, 3, 5 ], 4  => [ 1, 3, 3, 3 ]
     */
-    public static List<Integer> getHead(List<Integer> arr, Integer n) {
+    /*public static List<Integer> getHead(List<Integer> arr, Integer n) {
         ArrayList<Integer> arr2 = new ArrayList<>();
         for (var i = arr.size() - 1; arr2.size() <= n; i--) {
             arr2.add(0, arr.get(i));
         }
         return arr2;
-    }
+    }*/
         /*ArrayList<Integer> arr1 = new ArrayList<>();
         for (var i = 0; i < n; i++) {
             arr1.add(arr.get(i));
@@ -340,7 +340,13 @@ public class Arrays {
     *  [ 3, 4, 5 ] => [ 3, 4,4, 5,5,5 ]
     */
     public static List<Integer> propagateItemsByPositionIndex(List<Integer> arr) {
-        return new ArrayList<Integer>();
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        for (var i = 0; i < arr.size(); i++){
+            for (var j = -1; j < i; j++){
+                arr1.add(arr.get(i));
+            }
+        }
+        return arr1;
     }
 
     /**

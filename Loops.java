@@ -1,5 +1,5 @@
 import java.util.Date;
-import java.time.temporal.ChronoUnit;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.LinkedHashSet;
 import java.util.HashMap;
@@ -10,20 +10,17 @@ public class Loops {
     
 
     public static void main(String[] args) throws Exception {
-    /*HashMap<String, Integer> m1 = new HashMap<String, Integer>();
-    HashMap<String, Integer> m2 = new HashMap<String, Integer>();
-    m1.put("top", 0);
-    m1.put("left", 0);
-    m1.put("width", 10);
-    m1.put("height", 10);
-    m2.put("top", 5);
-    m2.put("left", 5);
-    m2.put("width", 20);
-    m2.put("height", 20);*/
+    /*HashMap<String, Double> m1 = new HashMap<String, Double>();
+    HashMap<String, Double> m2 = new HashMap<String, Double>();
+    m1.put("x", 0.0);
+    m1.put("y", 0.0);
+    
+    m2.put("x", 1.0);
+    m2.put("y", 1.0);*/
     Date sd = new Date("2000-01-01 01:00:00");
     Date ed = new Date("2015-01-02 03:00:05");
     System.out.println(timespanToHumanString(sd, ed));
-
+    
     }
 
     /**
@@ -215,6 +212,9 @@ public class Loops {
    *   
    */
     public static Boolean isInsideCircle(Map<String, Double> center, Integer radius, Map<String, Double> point) {
+        if ((Math.sqrt(Math.pow(center.get("x") - point.get("x"), 2) + Math.pow(center.get("y") - point.get("y"), 2))) <= radius){
+            return true;
+        }
         return false;
     }
 
@@ -426,12 +426,9 @@ public class Loops {
      *   DateTime('2000-01-01 01:00:00'), DateTime('2015-01-02 03:00:05')  => '15 years ago'
      *
      */
-    public static java.lang.String timespanToHumanString(Date startDate, Date endDate) {
-        try{
-            int diff = (int)(endDate.getTime() - startDate.getTime());
-            //return diff;
-        } catch (Exception ex) {
-            //return ex;
-        }
-    }    return ex;
+    public static String timespanToHumanString(Date startDate, Date endDate) {
+        long diff = date2.getTime() - date1.getTime();
+        
+        return diff;       
+    } 
 }
