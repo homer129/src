@@ -1,4 +1,6 @@
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.LinkedHashSet;
@@ -17,8 +19,19 @@ public class Loops {
     
     m2.put("x", 1.0);
     m2.put("y", 1.0);*/
-    Date sd = new Date("2000-01-01 01:00:00");
-    Date ed = new Date("2015-01-02 03:00:05");
+    
+    //Date sd = new Date("2000-01-01 01:00:00");
+    //Date sd = new Date("2000-01-01 01:00:01");
+    Calendar calendar1 = new GregorianCalendar(2000, 0 , 01);
+    calendar1.set(Calendar.HOUR, 01);
+    calendar1.set(Calendar.MINUTE, 00);
+    calendar1.set(Calendar.SECOND, 00);
+    Date sd = calendar1.getTime();
+    Calendar calendar2 = new GregorianCalendar(2015, 01 , 02);
+    calendar2.set(Calendar.HOUR, 03);
+    calendar2.set(Calendar.MINUTE, 00);
+    calendar2.set(Calendar.SECOND, 05);
+    Date ed = calendar2.getTime();
     System.out.println(timespanToHumanString(sd, ed));
     
     }
@@ -427,8 +440,30 @@ public class Loops {
      *
      */
     public static String timespanToHumanString(Date startDate, Date endDate) {
-        long diff = date2.getTime() - date1.getTime();
-        
-        return diff;       
+        long diffsec = (endDate.getTime() - startDate.getTime()) / 1000;
+        if (0 < diffsec &&  diffsec <= 45) {
+            return "a few seconds ago";
+        } else if (45 < diffsec &&  diffsec <= 90) {
+            return "a minute ago";
+        } else if (90 < diffsec &&  diffsec <= 45 * 60) {
+            return Math.round(diffsec / 60) + " minutes ago";
+        } else if (45 * 60 < diffsec &&  diffsec <= 90 * 60) {
+            return "an hour ago";
+        } else if (90 * 60 < diffsec &&  diffsec <= 22 * 60 * 60) {
+            return Math.round(diffsec / (60 * 60)) + " hours ago";
+        } else if (22 * 60 * 60 < diffsec &&  diffsec <= 36 * 60 * 60) {
+            return "a days ago";
+        } else if (36 * 60 * 60 < diffsec &&  diffsec <= 25 * 24 * 60 * 60) {
+            return Math.round(diffsec / (24 * 60 * 60)) + " days ago";
+        } else if (25 * 24 * 60 * 60 < diffsec &&  diffsec <= 45 * 24 * 60 * 60) {
+            return "a month ago";
+        } else if (45 * 24 * 60 * 60 < diffsec &&  diffsec <= 345 * 24 * 60 * 60) {
+            return Math.round(diffsec / (31 * 24 * 60 * 60)) + " months ago";
+        } else if (345 * 24 * 60 * 60 < diffsec &&  diffsec <= 545 * 24 * 60 * 60) {
+            return "a year ago";
+        } else if (545 * 24 * 60 * 60 < diffsec) {
+            return Math.round(diffsec / (365 * 24 * 60 * 60)) + " years ago";
+        }        
+        return "null";      
     } 
 }
